@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from "react";
+import Navbar from './components/Navbar.jsx';
+import Hero from './components/Hero.jsx';
+import About from './components/About.jsx';
+import Projects from './components/Projects.jsx';
+import Skills from './components/Skills.jsx';
+import Contact from './components/Contact.jsx';
+import Footer from './components/Footer.jsx';
+import { useTheme } from './hooks/useTheme.js';
 
 function App() {
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/projects/")
-      .then((res) => res.json())
-      .then((data) => setProjects(data));
-  }, []);
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme !== 'light';
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Solomon Ferede — Portfolio</h1>
-      <ul>
-        {projects.map((p) => (
-          <li key={p.id}>
-            <strong>{p.title}</strong> — {p.technologies}
-          </li>
-        ))}
-      </ul>
+    <div>
+      <Navbar onToggleTheme={toggleTheme} isDark={isDark} />
+      <main>
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 }
