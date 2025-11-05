@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export function BlogCard({ blog, i }) {
   return (
@@ -22,6 +23,9 @@ export function BlogCard({ blog, i }) {
       <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
         {blog.published_at ? new Date(blog.published_at).toLocaleDateString() : 'Draft'}
         {blog.author ? ` • ${blog.author}` : ''}
+      </div>
+      <div className="mt-4">
+        <Link to={`/blogs/${blog.id}`} className="text-sm text-brand-600 hover:underline">Read more</Link>
       </div>
     </motion.article>
   );

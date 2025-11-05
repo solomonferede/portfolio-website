@@ -64,14 +64,10 @@ export default function Hero() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <div className="card p-6 md:p-10">
-            <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-brand-500/20 to-purple-500/20 grid place-items-center border border-slate-200/60 dark:border-slate-800/60">
-              <div className="text-center">
-                <div className="text-6xl">⚡</div>
-                <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-                  Ethiopian Electric Power • EEP
-                </p>
-              </div>
+          <div className="card p-2 md:p-4">
+            <div className="aspect-[4/3] rounded-xl overflow-hidden border border-slate-200/60 dark:border-slate-800/60 bg-slate-100 dark:bg-slate-800">
+              {/* eslint-disable-next-line */}
+              <img src="/images/profile.jpg" alt="Profile" className="w-full h-full object-cover" />
             </div>
           </div>
         </motion.div>

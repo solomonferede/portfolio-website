@@ -1,5 +1,8 @@
 import Hero from '../components/Hero.jsx';
 import About from '../components/About.jsx';
+import Experience from '../components/Experience.jsx';
+import Education from '../components/Education.jsx';
+import Certificates from '../components/Certificates.jsx';
 import RecentPosts from '../components/RecentPosts.jsx';
 import RecentProjects from '../components/RecentProjects.jsx';
 import Skills from '../components/Skills.jsx';
@@ -26,6 +29,9 @@ export default function Home() {
     <div>
       <Hero />
       <About />
+      <Experience />
+      <Education />
+      <Certificates />
       <RecentPosts />
       <RecentProjects />
       <Skills />

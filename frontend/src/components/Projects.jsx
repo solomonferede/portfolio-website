@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export function ProjectCard({ project, i }) {
   return (
-    <motion.a
-      href={project.link || '#'}
-      target={project.link && project.link.startsWith('http') ? '_blank' : undefined}
-      rel={project.link && project.link.startsWith('http') ? 'noreferrer' : undefined}
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -32,8 +30,14 @@ export function ProjectCard({ project, i }) {
             </span>
           ))}
         </div>
+        <div className="mt-4 flex items-center gap-4">
+          <Link to={`/projects/${project.id}`} className="text-sm text-brand-600 hover:underline">View details</Link>
+          {project.link && (
+            <a href={project.link} target={project.link.startsWith('http') ? '_blank' : undefined} rel={project.link.startsWith('http') ? 'noreferrer' : undefined} className="text-sm text-slate-600 dark:text-slate-300 hover:underline">External</a>
+          )}
+        </div>
       </div>
-    </motion.a>
+    </motion.div>
   );
 }
 

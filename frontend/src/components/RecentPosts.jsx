@@ -44,7 +44,12 @@ export default function RecentPosts() {
       ) : (
         <div className="grid sm:grid-cols-2 gap-6">
           {blogs.map((b, i) => (
-            <BlogCard key={b.id} blog={b} i={i} />
+            <div key={b.id}>
+              <BlogCard blog={b} i={i} />
+              <div className="mt-2">
+                <Link to={`/blogs/${b.id}`} className="text-sm text-brand-600 hover:underline">Read more</Link>
+              </div>
+            </div>
           ))}
         </div>
       )}

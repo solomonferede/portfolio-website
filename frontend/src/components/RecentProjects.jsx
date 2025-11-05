@@ -46,7 +46,12 @@ export default function RecentProjects() {
       ) : (
         <div className="grid sm:grid-cols-2 gap-6">
           {projects.map((p, i) => (
-            <ProjectCard key={p.id} project={p} i={i} />
+            <div key={p.id}>
+              <ProjectCard project={p} i={i} />
+              <div className="mt-2">
+                <Link to={`/projects/${p.id}`} className="text-sm text-brand-600 hover:underline">View details</Link>
+              </div>
+            </div>
           ))}
         </div>
       )}
