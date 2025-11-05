@@ -17,14 +17,7 @@ export default function Navbar({ onToggleTheme, isDark }) {
 
   function handleNavClick(e, href) {
     e.preventDefault();
-    if (href.startsWith('/')) {
-      navigate(href);
-      setOpen(false);
-      return;
-    }
-    const id = href.replace('#', '');
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    navigate(`/${href}`); // navigate to home with hash, Home will handle scroll
     setOpen(false);
   }
 
@@ -41,9 +34,9 @@ export default function Navbar({ onToggleTheme, isDark }) {
                 {it.label}
               </Link>
             ) : (
-              <a key={it.href} href={it.href} className="text-sm hover:text-brand-600" onClick={(e) => handleNavClick(e, it.href)}>
+              <Link key={it.href} to={`/${it.href}`} className="text-sm hover:text-brand-600" onClick={(e) => handleNavClick(e, it.href)}>
                 {it.label}
-              </a>
+              </Link>
             )
           ))}
           <button aria-label="Toggle Theme" onClick={onToggleTheme} className="p-2 rounded-xl border border-slate-200/60 dark:border-slate-800/60">
@@ -68,9 +61,9 @@ export default function Navbar({ onToggleTheme, isDark }) {
                   {it.label}
                 </Link>
               ) : (
-                <a key={it.href} href={it.href} className="py-1" onClick={(e) => handleNavClick(e, it.href)}>
+                <Link key={it.href} to={`/${it.href}`} className="py-1" onClick={(e) => handleNavClick(e, it.href)}>
                   {it.label}
-                </a>
+                </Link>
               )
             ))}
           </div>

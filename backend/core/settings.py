@@ -11,11 +11,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
 from pathlib import Path
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 
 
-# Load environment variables from a .env file
-load_dotenv()
+# Load environment variables from nearest .env up the tree (project root)
+load_dotenv(find_dotenv())
 
 
 print("DB_NAME =", os.environ.get("DB_NAME"))
