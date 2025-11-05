@@ -30,7 +30,7 @@ require_cmd() {
 
 echo "[1/9] Updating apt and installing packages..."
 sudo apt-get update -y
-sudo apt-get install -y python3-venv python3-pip nginx nodejs npm git
+sudo apt-get install -y python3-venv python3-pip nginx git
 
 echo "[2/9] Preparing Python virtual environment..."
 sudo mkdir -p "$VENVS_DIR"
