@@ -1,11 +1,9 @@
 import Navbar from './components/Navbar.jsx';
-import Hero from './components/Hero.jsx';
-import About from './components/About.jsx';
 import Projects from './components/Projects.jsx';
 import Blogs from './components/Blogs.jsx';
-import Skills from './components/Skills.jsx';
-import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import Home from './pages/Home.jsx';
+import { Routes, Route } from 'react-router-dom';
 import { useTheme } from './hooks/useTheme.js';
 
 function App() {
@@ -16,12 +14,11 @@ function App() {
     <div>
       <Navbar onToggleTheme={toggleTheme} isDark={isDark} />
       <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Blogs />
-        <Skills />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/projects" element={<Projects />} />
+        </Routes>
       </main>
       <Footer />
     </div>

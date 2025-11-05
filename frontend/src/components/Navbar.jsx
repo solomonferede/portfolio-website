@@ -1,20 +1,27 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
 
 export default function Navbar({ onToggleTheme, isDark }) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const items = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#skills', label: 'Tech Stack' },
-    { href: '#contact', label: 'Contact' },
+    { type: 'anchor', href: '#home', label: 'Home' },
+    { type: 'anchor', href: '#about', label: 'About' },
+    { type: 'route', href: '/projects', label: 'Projects' },
+    { type: 'route', href: '/blogs', label: 'Blog' },
+    { type: 'anchor', href: '#skills', label: 'Tech Stack' },
+    { type: 'anchor', href: '#contact', label: 'Contact' },
   ];
 
   function handleNavClick(e, href) {
     e.preventDefault();
+    if (href.startsWith('/')) {
+      navigate(href);
+      setOpen(false);
+      return;
+    }
     const id = href.replace('#', '');
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -29,9 +36,15 @@ export default function Navbar({ onToggleTheme, isDark }) {
         </Link>
         <div className="hidden md:flex items-center gap-8">
           {items.map((it) => (
-            <a key={it.href} href={it.href} className="text-sm hover:text-brand-600" onClick={(e) => handleNavClick(e, it.href)}>
-              {it.label}
-            </a>
+            it.type === 'route' ? (
+              <Link key={it.href} to={it.href} className="text-sm hover:text-brand-600" onClick={() => setOpen(false)}>
+                {it.label}
+              </Link>
+            ) : (
+              <a key={it.href} href={it.href} className="text-sm hover:text-brand-600" onClick={(e) => handleNavClick(e, it.href)}>
+                {it.label}
+              </a>
+            )
           ))}
           <button aria-label="Toggle Theme" onClick={onToggleTheme} className="p-2 rounded-xl border border-slate-200/60 dark:border-slate-800/60">
             {isDark ? <FiSun /> : <FiMoon />}
@@ -50,9 +63,15 @@ export default function Navbar({ onToggleTheme, isDark }) {
         <div className="md:hidden container-px pb-4">
           <div className="card p-4 flex flex-col gap-3">
             {items.map((it) => (
-              <a key={it.href} href={it.href} className="py-1" onClick={(e) => handleNavClick(e, it.href)}>
-                {it.label}
-              </a>
+              it.type === 'route' ? (
+                <Link key={it.href} to={it.href} className="py-1" onClick={() => setOpen(false)}>
+                  {it.label}
+                </Link>
+              ) : (
+                <a key={it.href} href={it.href} className="py-1" onClick={(e) => handleNavClick(e, it.href)}>
+                  {it.label}
+                </a>
+              )
             ))}
           </div>
         </div>

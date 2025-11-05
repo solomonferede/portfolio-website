@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-function ProjectCard({ project, i }) {
+export function ProjectCard({ project, i }) {
   return (
     <motion.a
       href={project.link || '#'}

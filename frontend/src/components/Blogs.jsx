@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-function BlogCard({ blog, i }) {
+export function BlogCard({ blog, i }) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
