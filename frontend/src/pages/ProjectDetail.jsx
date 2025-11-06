@@ -39,7 +39,7 @@ export default function ProjectDetail() {
         <div className="aspect-video bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden mb-6">
           {/* ✅ base now accessible here */}
           <img
-            src={`${base.replace("/api", "")}${project.featured_image}`}
+            src={project.featured_image}
             alt={project.title}
             className="w-full h-full object-cover"
           />

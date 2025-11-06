@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class Project(models.Model):
     title = models.CharField(max_length=100)
@@ -18,9 +19,9 @@ class Blog(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=220, unique=True)
     excerpt = models.TextField(blank=True)
-    content = models.TextField()
+    content = RichTextField()
     author = models.CharField(max_length=120, blank=True)
-    cover_image = models.URLField(blank=True)
+    cover_image = models.ImageField(upload_to='blogs/', blank=True)
     tags = models.CharField(max_length=250, blank=True, help_text="Comma-separated tags")
     published_at = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

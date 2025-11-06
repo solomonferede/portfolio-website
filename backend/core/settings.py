@@ -52,7 +52,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'api',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_MAX_SIZE = 2 * 1024 * 1024  # 2MB
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

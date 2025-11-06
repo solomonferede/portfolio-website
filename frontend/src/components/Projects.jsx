@@ -65,7 +65,7 @@ export default function Projects() {
               .filter(Boolean),
             live_link: p.live_link,
             github_link: p.github_link,
-            image: p.featured_image ? `${base.replace('/api', '')}${p.featured_image}` : '/vite.svg',
+            image: p.featured_image || '/vite.svg',
           }));
         setProjects(normalized);
       })

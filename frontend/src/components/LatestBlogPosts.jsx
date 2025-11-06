@@ -21,6 +21,7 @@ export default function LatestBlogPosts() {
             author: b.author || '',
             published_at: b.published_at,
             tags: (b.tags || '').split(',').map((t) => t.trim()).filter(Boolean),
+            cover_image: b.cover_image,
           }));
         setBlogs(normalized);
       })

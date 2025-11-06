@@ -45,9 +45,7 @@ export default function BlogDetail() {
           <img src={blog.cover_image} alt={blog.title} className="rounded-xl border border-slate-200/60 dark:border-slate-800/60" />
         </div>
       )}
-      <article className="prose dark:prose-invert mt-6 max-w-none">
-        {blog.content}
-      </article>
+      <article className="prose dark:prose-invert mt-6 max-w-none" dangerouslySetInnerHTML={{ __html: blog.content }}></article>
     </section>
   );
 }
