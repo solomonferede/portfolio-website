@@ -8,6 +8,11 @@ export default function About() {
         <div className="lg:col-span-1">
           <h2 className="text-2xl sm:text-3xl font-bold">About Me</h2>
           <p className="mt-2 text-slate-500 dark:text-slate-400">Background and focus</p>
+          <div className="mt-4">
+            <a href="http://localhost:8000/api/download-cv/" download="Solomon-Ferede-CV.pdf" className="btn btn-brand">
+              Download CV
+            </a>
+          </div>
         </div>
         <div className="lg:col-span-2 space-y-4">
           {profile.about.map((paragraph, idx) => (

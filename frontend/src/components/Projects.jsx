@@ -32,8 +32,11 @@ export function ProjectCard({ project, i }) {
         </div>
         <div className="mt-4 flex items-center gap-4">
           <Link to={`/projects/${project.id}`} className="text-sm text-brand-600 hover:underline">View details</Link>
-          {project.link && (
-            <a href={project.link} target={project.link.startsWith('http') ? '_blank' : undefined} rel={project.link.startsWith('http') ? 'noreferrer' : undefined} className="text-sm text-slate-600 dark:text-slate-300 hover:underline">External</a>
+          {project.live_link && (
+            <a href={project.live_link} target="_blank" rel="noreferrer" className="text-sm text-slate-600 dark:text-slate-300 hover:underline">Live Demo</a>
+          )}
+          {project.github_link && (
+            <a href={project.github_link} target="_blank" rel="noreferrer" className="text-sm text-slate-600 dark:text-slate-300 hover:underline">View on GitHub</a>
           )}
         </div>
       </div>
@@ -60,8 +63,9 @@ export default function Projects() {
               .split(',')
               .map((t) => t.trim())
               .filter(Boolean),
-            link: p.live_link || p.github_link || '#',
-            image: '/vite.svg',
+            live_link: p.live_link,
+            github_link: p.github_link,
+            image: p.featured_image ? `${base.replace('/api', '')}${p.featured_image}` : '/vite.svg',
           }));
         setProjects(normalized);
       })
