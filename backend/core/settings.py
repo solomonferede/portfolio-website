@@ -37,7 +37,7 @@ SECRET_KEY = 'django-insecure-wnzv*l%ylcah3-v4h^96bygtuu-jurdn6$_e-_irk8%ocx7l7^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['solomonferede.ethiodigital.com']
 
 
 # Application definition
