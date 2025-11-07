@@ -10,7 +10,7 @@ def download_cv(request):
     return response
 
 
-from .models import Project, Blog, Experience, Education, Certificate
+from .models import Project, Blog
 from .serializers import (
     ProjectSerializer,
     BlogSerializer,
