@@ -14,9 +14,6 @@ from .models import Project, Blog, Experience, Education, Certificate
 from .serializers import (
     ProjectSerializer,
     BlogSerializer,
-    ExperienceSerializer,
-    EducationSerializer,
-    CertificateSerializer,
 )
 
 class ProjectViewSet(viewsets.ModelViewSet):
@@ -38,18 +35,3 @@ class BlogViewSet(viewsets.ModelViewSet):
         if limit:
             return queryset[:int(limit)]
         return queryset
-
-
-class ExperienceViewSet(viewsets.ModelViewSet):
-    queryset = Experience.objects.all().order_by('-start_date', '-created_at')
-    serializer_class = ExperienceSerializer
-
-
-class EducationViewSet(viewsets.ModelViewSet):
-    queryset = Education.objects.all().order_by('-start_date', '-created_at')
-    serializer_class = EducationSerializer
-
-
-class CertificateViewSet(viewsets.ModelViewSet):
-    queryset = Certificate.objects.all().order_by('-issue_date', '-created_at')
-    serializer_class = CertificateSerializer
