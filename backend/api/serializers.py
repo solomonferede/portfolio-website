@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project, Blog, Experience, Education, Certificate
+from .models import Project, Blog
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
